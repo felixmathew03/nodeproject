@@ -78,7 +78,7 @@
         }
         input{
             padding-left: 5px;
-            width: 180px;
+            width: 250px;
             height: 28px;
             box-shadow: 1px 4px 8px 2px rgba(9, 66, 48, 0.25), 1px 0px 0px 1px rgba(9, 66, 57, 0.08);
             border: none;
@@ -86,7 +86,11 @@
             border-radius: 4px;
             background-color: #f7f2f2;
         }
-        input:hover{
+        table .t2 input{
+            width: 150px;
+            height: 28px;
+        }
+        input:focus{
             transform: scale(1.1,1.1);
         }
         input:focus{
@@ -100,24 +104,24 @@
             font-weight: 600;
         }
         #edit{
-            background-color: #ffcb9a;
+            border:1px solid #a75f1d;
         }
         #save{
-            background-color: #64f8ce;
+            border:1px solid #1c7c39;
         }
         #delete{
-            background-color: #eb787f;
+            border:1px solid #af111c;
         }
         #edit:hover{
-            background-color: #f47e11;
+            background-color: #a75f1d;
             color: white;
         }
         #save:hover{
-            background-color: #04f54c;
+            background-color: #1c7c39;
             color: white;
         }
         #delete:hover{
-            background-color: #ee1827;
+            background-color: #af111c;
             color: white;
         }
     </style>
@@ -128,6 +132,7 @@
         
         <div class="button1">
             <a href="./pages/add"><button >Add Student</button></a>
+        </div>
     </div>
     <div class="container" id="main">
         

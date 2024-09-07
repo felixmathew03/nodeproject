@@ -29,7 +29,7 @@ const app=http.createServer(async(req,res)=>{
     }
 
 
-    //fetch data from add donor
+    //fetch data from add student
     if(path.pathname=="/submit" && req.method=="POST"){
         let body="";
         req.on("data",(chunks)=>{

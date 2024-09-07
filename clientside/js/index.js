@@ -25,7 +25,7 @@ async function getstudents() {
                     <th>Subjects</th>
                     <td>:</td>
                     <td>
-                        <table>
+                        <table class="t2">
                             <tr>
                                 <th><label for="maths">Mathematics</label></th>
                                 <td>:</td>
