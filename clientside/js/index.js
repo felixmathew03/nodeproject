@@ -2,6 +2,7 @@ async function getstudents() {
     const res=await fetch("http://localhost:3000/getstudents");
     const data=await res.json();
     str=``;
+    avg=0
     data.map((dt)=>{
         str+=`
         <div class="content">
@@ -22,27 +23,19 @@ async function getstudents() {
                     <td align="center"><input type="text" value=${dt.class} disabled="true" name="class" id="class-${dt._id}"></td>
                 </tr>
                 <tr>
-                    <th>Subjects</th>
-                    <td>:</td>
-                    <td>
+                    <td colspan="3" align="center">
                         <table class="t2">
                             <tr>
-                                <th><label for="maths">Mathematics</label></th>
-                                <td>:</td>
+                                <th><label for="maths-${dt._id}">Mathematics</label></th>
+                                <th><label for="physics-${dt._id}">Physics</label></th>
+                                <th><label for="chemistry-${dt._id}">Chemistry</label></th>
+                            </tr>
+                            <tr>
                                 <td align="center"><input disabled="true" value=${dt.physics} type="text" name="maths" id="maths-${dt._id}"></td>
-                            </tr>
-                            <tr>
-                                <th><label for="physics">Physics</label></th>
-                                <td>:</td>
                                 <td align="center"><input disabled="true" value=${dt.maths} type="text" name="physics" id="physics-${dt._id}"></td>
-                            </tr>
-                            <tr>
-                                <th><label for="chemistry">Chemistry</label></th>
-                                <td>:</td>
                                 <td align="center"><input disabled="true" type="text" value=${dt.chemistry} name="chemistry" id="chemistry-${dt._id}"></td>
                             </tr>
                         </table>
-                        
                     </td>
                 </tr>
                 <tr>
@@ -52,12 +45,33 @@ async function getstudents() {
                         <button id="delete">DELETE</button>
                     </td>
                 </tr>
+                <tr>
+                    <td colspan="3" align="center" >
+                         <div class="eligibility" id="eligibility-${dt._id}">
+                            
+                        </div>
+                    </td>
+                </tr>
             </table>
+
         </div>   
         `
     });
  
     document.getElementById("main").innerHTML=str
+    data.map((dt)=>{
+        avg=(parseInt(dt.physics)+parseInt(dt.maths)+parseInt(dt.chemistry))/3;
+        if(avg>=40){
+            document.getElementById(`eligibility-${dt._id}`).innerHTML="<h3>Eligible for entrance</h3>";
+            document.getElementById(`eligibility-${dt._id}`).style.backgroundColor="#198754";
+            document.getElementById(`eligibility-${dt._id}`).style.color="white";
+        }
+        else{
+            document.getElementById(`eligibility-${dt._id}`).innerHTML="<h3>Not eligible for entrance</h3>";
+            document.getElementById(`eligibility-${dt._id}`).style.backgroundColor="#dc3545";
+            document.getElementById(`eligibility-${dt._id}`).style.color="white";
+        }
+    });
 }
 
 getstudents();
