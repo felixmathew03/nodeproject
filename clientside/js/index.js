@@ -40,9 +40,9 @@ async function getstudents() {
                 </tr>
                 <tr>
                     <td colspan="3" align="center">   
-                        <button id="edit">EDIT</button>
-                        <button id="save">SAVE</button>
-                        <button id="delete">DELETE</button>
+                        <button id="edit" onclick="handleEdit('${dt._id}')" >EDIT</button>
+                        <button id="save" onclick="handleSave('${dt._id}')">SAVE</button>
+                        <button id="delete" onclick="handleDelete('${dt._id}')">DELETE</button>
                     </td>
                 </tr>
                 <tr>
@@ -75,3 +75,52 @@ async function getstudents() {
 }
 
 getstudents();
+
+async function handleEdit(id){
+    document.getElementById(`name-${id}`).disabled=false;
+    document.getElementById(`rno-${id}`).disabled=false;
+    document.getElementById(`class-${id}`).disabled=false;
+    document.getElementById(`maths-${id}`).disabled=false;
+    document.getElementById(`physics-${id}`).disabled=false;
+    document.getElementById(`chemistry-${id}`).disabled=false;
+}
+
+async function handleSave(id) {
+    let name= document.getElementById(`name-${id}`).value;
+    let rno=document.getElementById(`rno-${id}`).value;
+    let clss=document.getElementById(`class-${id}`).value;
+    let maths=document.getElementById(`maths-${id}`).value;
+    let physics=document.getElementById(`physics-${id}`).value;
+    let chemistry=document.getElementById(`chemistry-${id}`).value;
+    let data={id,name,rno,clss,maths,physics,chemistry};
+    const jsonData=JSON.stringify(data);
+    const res=await fetch("http://localhost:3000/update",{
+        "method":"PUT",
+        "Content-Type":"text/json",
+        "body":jsonData
+    });
+    const result=await res.text();
+    if(result=="success"){
+        alert("Updated Successfully!!!");
+        getstudents();
+    }
+    else{
+        alert("Updation Failed")
+    }
+}
+
+async function handleDelete(id) {
+    const res = await fetch("http://localhost:3000/delete",{
+        method:"DELETE",
+        headers:{"Content-Type":"text/plain"},
+        "body":id
+    })
+    const data=await res.text();
+    if(data=="success"){
+        alert("Deleted Successfully!!!");
+        getstudents();
+    }
+    else{
+        alert("Deletion Failed")
+    }
+} 
