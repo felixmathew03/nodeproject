@@ -39,7 +39,7 @@ async function getstudents() {
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="3" align="center">   
+                    <td colspan="3" align="center" >   
                         <button id="edit" onclick="handleEdit('${dt._id}')" >EDIT</button>
                         <button id="save" onclick="handleSave('${dt._id}')">SAVE</button>
                         <button id="delete" onclick="handleDelete('${dt._id}')">DELETE</button>
