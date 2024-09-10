@@ -57,6 +57,7 @@ async function getstudents() {
 
         </div>   
         `
+        arr.push(dt);
     });
  
     document.getElementById("main").innerHTML=str
@@ -125,9 +126,10 @@ async function handleDelete(id) {
         alert("Deletion Failed")
     }
 } 
-document.getElementById("search").addEventListener('keyup',(e)=>{
+document.getElementById("search").addEventListener('keyup',async(e)=>{
+    console.log("hai");
     str=``
-    arr.filter((i)=>i.name.toLowerCase().includes(e.target.value.toLowerCase())).map((dt)=>{
+    arr.filter((i)=>i.name.toLowerCase().includes(e.target.value.toLowerCase())).map((dt)=>{       
         str+=`
         <div class="content">
             <table class="table1">
@@ -183,7 +185,7 @@ document.getElementById("search").addEventListener('keyup',(e)=>{
     });
  
     document.getElementById("main").innerHTML=str
-    data.map((dt)=>{
+    arr.filter((i)=>i.name.toLowerCase().includes(e.target.value.toLowerCase())).map((dt)=>{
         avg=(parseInt(dt.physics)+parseInt(dt.maths)+parseInt(dt.chemistry))/3;
         if(avg>=40){
             document.getElementById(`eligibility-${dt._id}`).innerHTML="<h3>Eligible for entrance</h3>";
