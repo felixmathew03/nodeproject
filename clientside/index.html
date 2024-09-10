@@ -32,6 +32,10 @@
             font-family: "Bebas Neue", sans-serif;
             letter-spacing: 4px;
         }
+        .search input{
+            height: 35px;
+            width: 350px;
+        }
         .button1{
             width: 15%;
         }
@@ -71,6 +75,7 @@
         }
         .content:hover{
             box-shadow: #fae38e83 0px 5px 15px;
+            background-color: #f7f2f2;
             transition: 0.3s;
         }
 
@@ -86,7 +91,6 @@
             border: none;
             margin-left: 20px;
             border-radius: 4px;
-            background-color: #f7f2f2;
         }
         table .t2 input{
             width: 80px;
@@ -133,7 +137,7 @@
         }
         #delete:hover{
             background-color: #af111c;
-            color: white;
+            color: white;   
             transition: 0.3s;
         }
         .eligibility{
@@ -146,7 +150,9 @@
 <body>
     <div class="navbar">
         <h1 align="center">🎓ENTRANCE</h1>
-        
+        <div class="search">
+            <input type="text" name="search" id="search" placeholder="FILTER">
+        </div>
         <div class="button1">
             <a href="./pages/add"><button >Add Student</button></a>
         </div>
